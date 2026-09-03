@@ -2,7 +2,7 @@
 
 Saha gözlemlerinden **taşıyıcı sistem türü için ön sınıflandırma** üreten, yerel çalışan ve çevrimdışı kullanılabilen karar destek aracı.
 
-Bu repository; uygulama kodu, karar motoru, veri kuralları, UX kararları ve teknik mimari için **source of truth** olarak kullanılır. Repository disiplini `yunemcel/ari-portal` yaklaşımını örnek alır; ancak bu araç bağımsız ve küçük bir ürün olduğu için yalnız ihtiyacı olan dokümantasyon katmanlarını taşır.
+Bu repository; uygulama kodu, karar motoru, veri kuralları, UX kararları ve teknik mimari için **source of truth** olarak kullanılır.
 
 > **Durum:** Yunus Emre Çelik tarafından çalışma arkadaşlarına karar desteği sağlamak amacıyla hobi olarak hazırlanmıştır. Resmî kurumsal uygulama değildir.
 
@@ -25,22 +25,29 @@ Tek bir gözleme göre karar vermez. Kolon-kiriş iskeleti, taşıyıcı duvar s
 
 Sonuç **deprem güvenliği**, **riskli yapı tespiti**, **performans analizi**, statik proje kontrolü veya mühendislik raporu değildir. Puanlar yalnızca bu karar motorundaki gözlemsel kanıt ağırlığıdır.
 
-## Teknik özellikler
+## Kullanım biçimleri
 
-- Statik HTML/CSS/JavaScript PWA
-- Yapay zekâ servisi yok
-- Backend ve sunucu veritabanı yok
-- Harici JavaScript/CDN bağımlılığı yok
-- Analizler cihazın `localStorage` alanında tutulur
-- Proje + analiz numarasıyla yerel arşiv
-- JSON dışa/içe aktarma
-- Destekleyen mobil tarayıcılarda sistem paylaşım sayfası
-- Service worker ile çevrimdışı kullanım
-- iOS Safari Ana Ekran PWA, Android ve masaüstü web hedefi
+### 1. Tek HTML — Windows / Android
 
-## Canlı kullanım — GitHub Pages
+Repository kökündeki `Tasiyici_Sistem_Tespit_Standalone.html` dosyası bütün CSS ve JavaScript kodunu kendi içinde taşır.
 
-Repository kökten GitHub Pages ile yayınlanacak şekilde hazırlanmıştır.
+- Windows'ta dosyaya çift tıklayıp Edge, Chrome veya Firefox ile açılabilir.
+- Android'de HTML dosyasını JavaScript çalıştırabilen bir tarayıcıyla açabilirsiniz.
+- İnternet bağlantısı gerekmez.
+- Analiz arşivi tarayıcının yerel hafızasında tutulur.
+- JSON dışa/içe aktarma kullanılabilir.
+
+Bu dosya PWA kurulumu yapmaz; amacı tek dosyayı kopyalayıp doğrudan çalıştırmaktır.
+
+### 2. PWA — iOS / Android / masaüstü
+
+Modüler runtime GitHub Pages üzerinden HTTPS ile yayınlanır:
+
+`https://yunemcel.github.io/tasiyici-sistem-tespit/`
+
+iPhone/iPad için Safari → Paylaş → **Ana Ekrana Ekle** akışı kullanılmalıdır. Service worker online ilk açılıştan sonra uygulama kabuğunu cache'e alır ve sonraki açılışlarda çevrimdışı çalışma sağlar.
+
+## GitHub Pages
 
 Repository ayarında:
 
@@ -50,28 +57,17 @@ Repository ayarında:
 
 seçilmelidir.
 
-Beklenen adres:
+## Teknik özellikler
 
-`https://yunemcel.github.io/tasiyici-sistem-tespit/`
-
-### iPhone / iPad
-
-1. HTTPS adresini **Safari** ile açın.
-2. Safari paylaşım menüsünden **Ana Ekrana Ekle** seçeneğini kullanın.
-3. Uygulamayı internet bağlantısı varken en az bir kez açın.
-4. Service worker uygulama kabuğunu cache'e aldıktan sonra uygulama çevrimdışı açılabilir.
-
-WhatsApp veya Files içindeki yerel `.html` dosyasını açmak PWA kurulumu değildir; iOS yerel dosya önizlemesinde JavaScript uygulama davranışı güvenilir değildir.
-
-## Masaüstünde yerel geliştirme
-
-Service worker için `file://` yerine HTTP kullanın. Python bulunan bir bilgisayarda:
-
-```bash
-python -m http.server 8080
-```
-
-Ardından `http://localhost:8080/` adresini açın.
+- statik HTML/CSS/JavaScript,
+- yapay zekâ servisi yok,
+- backend ve sunucu veritabanı yok,
+- harici JavaScript/CDN bağımlılığı yok,
+- analizler cihazın `localStorage` alanında tutulur,
+- proje + analiz numarasıyla yerel arşiv,
+- JSON dışa/içe aktarma,
+- destekleyen mobil tarayıcılarda sistem paylaşım sayfası,
+- PWA sürümünde service worker ile çevrimdışı kullanım.
 
 ## Analiz kayıtları
 
@@ -91,7 +87,7 @@ Analiz numarası boş bırakılırsa proje içinde `Analiz_1`, `Analiz_2`, ... b
 
 - Tüm arşiv veya tek analiz JSON olarak dışa aktarılabilir.
 - Destekleyen mobil tarayıcılarda sistem paylaşım sayfası açılır.
-- Dosyalar uygulamasından JSON seçilerek içe aktarma yapılabilir.
+- Dosya seçici üzerinden JSON içe aktarılabilir.
 - Aynı kayıt kimliği tekrar gelirse daha yeni `updatedAt` tercih edilir.
 - Aynı proje + analiz numarası çakışırsa içe gelen kayda benzersiz yeni analiz numarası verilir.
 
@@ -108,62 +104,31 @@ index.html
 manifest.webmanifest → PWA metadata
 sw.js                 → offline app-shell cache
 icon.svg              → uygulama ikonu / favicon
+
+Tasiyici_Sistem_Tespit_Standalone.html
+  └─ yukarıdaki runtime'ın tek dosyada gömülü dağıtımı
 ```
 
 Karar motorunun UI'dan ayrı tutulması bilinçlidir. Puan değişiklikleri `docs/05-decision-engine/scoring-model.md` ile birlikte güncellenmelidir.
-
-## Repository yapısı
-
-```text
-.
-├── index.html
-├── app.css
-├── engine.js
-├── core.js
-├── views.js
-├── app.js
-├── manifest.webmanifest
-├── sw.js
-├── icon.svg
-├── .nojekyll
-├── README.md
-├── AGENTS.md
-├── DESIGN.md
-├── CHANGELOG.md
-├── docs/
-│   ├── 00-product/
-│   ├── 01-business-analysis/
-│   ├── 02-domain-model/
-│   ├── 03-ux/
-│   ├── 04-architecture/
-│   ├── 05-decision-engine/
-│   └── adr/
-├── tests/
-└── agent-logs/
-    └── chatgpt/
-```
 
 ## Dokümantasyon
 
 - [`AGENTS.md`](AGENTS.md) — agent çalışma sözleşmesi
 - [`DESIGN.md`](DESIGN.md) — bağlayıcı görsel ve etkileşim kuralları
 - [`docs/00-product/product-brief.md`](docs/00-product/product-brief.md) — ürün amacı ve kapsamı
-- [`docs/00-product/open-decisions.md`](docs/00-product/open-decisions.md) — açık kararlar
 - [`docs/01-business-analysis/business-rules.md`](docs/01-business-analysis/business-rules.md) — kayıt ve iş kuralları
 - [`docs/02-domain-model/analysis-record.md`](docs/02-domain-model/analysis-record.md) — analiz kayıt modeli
 - [`docs/03-ux/interaction-conventions.md`](docs/03-ux/interaction-conventions.md) — etkileşim davranışları
 - [`docs/03-ux/design-philosophy.md`](docs/03-ux/design-philosophy.md) — tasarım gerekçesi
-- [`docs/04-architecture/offline-pwa.md`](docs/04-architecture/offline-pwa.md) — çevrimdışı/PWA mimarisi
+- [`docs/04-architecture/offline-pwa.md`](docs/04-architecture/offline-pwa.md) — çevrimdışı mimari
 - [`docs/05-decision-engine/scoring-model.md`](docs/05-decision-engine/scoring-model.md) — karar motoru ve puanlar
-- [`docs/adr/ADR-001-local-first-static-pwa.md`](docs/adr/ADR-001-local-first-static-pwa.md)
-- [`docs/adr/ADR-002-json-import-export.md`](docs/adr/ADR-002-json-import-export.md)
 - [`tests/manual-test-checklist.md`](tests/manual-test-checklist.md) — manuel QA listesi
 
-## Tasarım ailesi
+## Tasarım dili
 
-Ürün, ARI Portal ile aynı tasarım ailesinin temel token ve davranış ilkelerini kullanır: `CoFo Sans → Arial → Helvetica`, ARI Orange / ARI Black temeli, kontrollü yoğunluk, semantik renk, düşük dekorasyon, görünür klavye focus'u ve görevden türeyen kompozisyon.
+Arayüz; `CoFo Sans → Arial → Helvetica` font zinciri, turuncu ana vurgu, koyu nötr yüzeyler, kontrollü bilgi yoğunluğu, semantik renk, düşük dekorasyon, görünür klavye focus'u ve görevden türeyen kompozisyon kullanır.
 
-Bu görsel akrabalık ürünün resmî ARI Şehircilik uygulaması olduğu anlamına gelmez. Kullanıcıya dönük metinlerde kurumsal unvan, adres, telefon veya resmî ürün iddiası kullanılmaz.
+Kullanıcıya dönük metinlerde kurumsal unvan, adres, telefon veya resmî ürün iddiası kullanılmaz.
 
 ## Çalışma yöntemi
 
