@@ -1,12 +1,19 @@
 # Changelog
 
+## 0.4.0 — 2026-09-03
+
+- Güncel PWA runtime'ından Windows/Android için tek dosyalı `Tasiyici_Sistem_Tespit_Standalone.html` dağıtımı tanımlandı.
+- Standalone dosyanın harici CSS/JS bağımlılığı olmaması kural haline getirildi.
+- Repository dokümantasyonundaki başka ürün/repository karşılaştırmaları kaldırıldı.
+- PWA ve standalone sürümlerin aynı karar motoru ve veri davranışını taşıması dokümante edildi.
+
 ## 0.3.0 — 2026-09-03
 
 - iOS / GitHub Pages için PWA paketi oluşturuldu.
 - Service worker ve manifest eklendi.
 - Mobil dışa aktarmada sistem paylaşım sayfası desteği eklendi.
 - Files üzerinden JSON içe aktarma korundu.
-- Footer'dan resmî ARI Şehircilik iletişim/unvan bilgileri kaldırıldı.
+- Footer'dan resmî şirket iletişim/unvan bilgileri kaldırıldı.
 - Arama alanındaki çift sınır problemi düzeltildi.
 - Sayfa konteynerine verilen programatik focus nedeniyle görünen büyük siyah çerçeve kaldırıldı.
 - Yerel HTML önizlemesi için JavaScript çalışmadığında açıklayıcı fallback içerik eklendi.
@@ -19,7 +26,7 @@
 - Yerel analiz arşivi eklendi.
 - JSON içe/dışa aktarma ve kayıt birleştirme eklendi.
 - Yerel hafıza temizleme eylemi eklendi.
-- ARI Portal tasarım ailesiyle header/çalışma yüzeyi uyumu artırıldı.
+- Header ve çalışma yüzeyi için ortak ürün tasarım dili netleştirildi.
 
 ## 0.1.0 — 2026-09-03
 
