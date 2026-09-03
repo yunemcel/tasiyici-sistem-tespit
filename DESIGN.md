@@ -1,15 +1,14 @@
 ---
 project: Taşıyıcı Sistem Tespit
-scope: web, PWA, responsive UI
-schema_version: 1
+scope: web, PWA, standalone HTML, responsive UI
+schema_version: 2
 status: binding
-source_family: ARI Portal tasarım sistemi
 updated: 2026-09-03
 ---
 
 # DESIGN.md — Taşıyıcı Sistem Tespit Tasarım Yönetmeliği
 
-Bu belge uygulamanın arayüzü ve PWA yüzeyi için bağlayıcı tasarım kurallarını tanımlar. Görsel dil ARI Portal ailesinden türetilmiştir; ancak bu ürün resmî kurumsal uygulama değildir.
+Bu belge uygulamanın arayüzü, PWA yüzeyi ve tek HTML dağıtımı için bağlayıcı tasarım kurallarını tanımlar.
 
 ## 1. Öncelik sırası
 
@@ -18,7 +17,7 @@ Bu belge uygulamanın arayüzü ve PWA yüzeyi için bağlayıcı tasarım kural
 3. saha görev akışı ve karar hızı,
 4. oran, boşluk, hizalama ve grid,
 5. platform-native davranış,
-6. renk ve marka tokenları,
+6. renk ve tipografi tokenları,
 7. dekorasyon.
 
 ## 2. Birincil görev
@@ -51,10 +50,10 @@ Kullanıcı mümkün olduğunca az navigasyonla gözlemleri işaretlemeli, anali
 
 | Token | Değer | Rol |
 |---|---|---|
-| `ARIOrange` | `#F8B231` | ana vurgu / primary action |
-| `ARIBlack` | `#3B3835` | koyu metin / seçili kontrol / footer |
-| `ARIRed` | `#B52E2C` | destructive / hata |
-| `ARIGray` | `#333333` | ana metin |
+| `accentOrange` | `#F8B231` | ana vurgu / primary action |
+| `inkBlack` | `#3B3835` | koyu metin / seçili kontrol / footer |
+| `errorRed` | `#B52E2C` | destructive / hata |
+| `textPrimary` | `#333333` | ana metin |
 | `backgroundWarm` | `#F8EFE4` | sakin açıklama yüzeyi |
 | `surfaceMuted` | `#F1F1EE` | ikincil yüzey |
 | `border` | `#D8D5D0` | standart sınır |
@@ -62,11 +61,11 @@ Kullanıcı mümkün olduğunca az navigasyonla gözlemleri işaretlemeli, anali
 | `success` | `#2F7D4B` | başarılı/erişilebilir durum |
 | `warning` | `#A96500` | dikkat / düşük güven |
 
-ARI Orange üzerinde standart boy beyaz metin kullanılmaz.
+Turuncu vurgu üzerinde standart boy beyaz metin kullanılmaz.
 
 ## 6. Header
 
-- solda turuncu düşey marka çizgisi,
+- solda turuncu düşey kimlik çizgisi,
 - ürün adı sakin ve ikincil,
 - ortada arşiv araması,
 - sağda sınırlı ana navigasyon/ayar eylemleri.
@@ -115,18 +114,19 @@ Hedef WCAG 2.2 AA'dır.
 
 ## 12. Footer
 
-- ARI Şehircilik resmî iletişim/unvan bilgileri kullanılmaz,
+- resmî şirket iletişim/unvan bilgileri kullanılmaz,
 - araç resmî kurumsal uygulama gibi sunulmaz,
 - Yunus Emre Çelik tarafından çalışma arkadaşlarına hobi/karar destek amacıyla hazırlandığı belirtilebilir,
 - mühendislik sınırı görünür kalır.
 
-## 13. Responsive / PWA
+## 13. Responsive / dağıtım
 
 - Reflow önceliklidir; sabit yükseklikten kaçınılır.
 - Masaüstü iki kolonlu soru yüzeyi mobilde tek kolona iner.
 - iOS standalone viewport davranışı bozulmamalıdır.
-- PWA ikonları ve theme-color arayüz ailesiyle uyumlu kalır.
+- PWA ve tek HTML sürümü aynı işlevsel UI'yı taşımalıdır.
+- Tek HTML sürümünde harici CSS/JS bağımlılığı bulunmamalıdır.
 
 ## 14. QA
 
-Final kabulünden önce arama çift border, büyük siyah focus çerçevesi, radio durumları, modal dış tıklama/Escape, 320–390 px taşma, iOS standalone, offline ikinci açılış, JSON import/export ve resmî ürün izlenimi kontrolleri yapılır.
+Final kabulünden önce arama çift border, büyük siyah focus çerçevesi, radio durumları, modal dış tıklama/Escape, 320–390 px taşma, iOS standalone, Windows/Android tek HTML, offline ikinci açılış, JSON import/export ve resmî ürün izlenimi kontrolleri yapılır.
