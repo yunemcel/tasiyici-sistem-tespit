@@ -1,6 +1,17 @@
 # Manuel Test Kontrol Listesi
 
-## Masaüstü
+## Windows — tek HTML
+
+- [ ] `Tasiyici_Sistem_Tespit_Standalone.html` dosyasına çift tıklayınca güncel tarayıcıda açılıyor
+- [ ] Harici CSS/JS dosyası olmadan ana sayfa oluşuyor
+- [ ] Yeni tespit formunda 15 soru aynı sayfada
+- [ ] Analiz oluşturma → sonuç → arşiv zinciri çalışıyor
+- [ ] Tarayıcı kapatılıp dosya tekrar açıldığında localStorage izin veriyorsa analiz duruyor
+- [ ] JSON dışa aktarma çalışıyor
+- [ ] JSON içe aktarma çalışıyor
+- [ ] İnternet bağlantısı olmadan temel işlevler çalışıyor
+
+## Masaüstü — PWA / GitHub Pages
 
 - [ ] GitHub Pages adresi açılıyor
 - [ ] Header tek satır ve arama kutusu çift border üretmiyor
@@ -37,9 +48,23 @@
 - [ ] Paylaş / Dışa Aktar share sheet açıyor veya fallback download sağlıyor
 - [ ] Dosyadan İçe Aktar Files seçicisini açıyor
 
-## Android
+## Android — PWA
 
-- [ ] Chrome'da sayfa açılıyor
+- [ ] Chrome'da GitHub Pages adresi açılıyor
 - [ ] install/PWA akışı çalışıyor
 - [ ] offline tekrar açılış çalışıyor
 - [ ] JSON paylaşım veya indirme çalışıyor
+
+## Android — tek HTML
+
+- [ ] `Tasiyici_Sistem_Tespit_Standalone.html` dosyası JavaScript çalıştıran tarayıcıda açılıyor
+- [ ] 15 soruluk tespit ekranı çalışıyor
+- [ ] Analiz arşivi oluşturulabiliyor
+- [ ] JSON dışa/içe aktarma çalışıyor
+- [ ] İnternet kapalıyken temel işlevler çalışıyor
+
+## Dağıtım eşliği
+
+- [ ] PWA ve standalone aynı 15 soruyu gösteriyor
+- [ ] Aynı yanıt seti iki dağıtımda aynı ana sonucu üretiyor
+- [ ] Runtime değişikliğinden sonra GitHub Actions standalone dosyayı yeniden üretiyor
