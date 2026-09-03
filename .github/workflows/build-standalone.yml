@@ -1,0 +1,46 @@
+name: Build Standalone HTML
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - index.html
+      - app.css
+      - engine.js
+      - core.js
+      - views.js
+      - app.js
+      - tools/build-standalone.py
+      - .github/workflows/build-standalone.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Kaynak kodu al
+        uses: actions/checkout@v4
+
+      - name: Python hazırla
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Standalone HTML üret
+        run: python tools/build-standalone.py
+
+      - name: Değişiklik varsa kaydet
+        shell: bash
+        run: |
+          if git diff --quiet -- Tasiyici_Sistem_Tespit_Standalone.html && git ls-files --error-unmatch Tasiyici_Sistem_Tespit_Standalone.html >/dev/null 2>&1; then
+            echo "Standalone HTML güncel."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add Tasiyici_Sistem_Tespit_Standalone.html
+          git commit -m "build: standalone html güncelle [skip ci]"
+          git push
