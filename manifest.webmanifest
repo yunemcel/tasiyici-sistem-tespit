@@ -1,0 +1,19 @@
+{
+  "name": "Taşıyıcı Sistem Tespit",
+  "short_name": "Taşıyıcı Tespit",
+  "description": "Çevrimdışı saha taşıyıcı sistem ön sınıflandırma ve analiz arşivi.",
+  "start_url": "./index.html#/home",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#FFFFFF",
+  "theme_color": "#F8B231",
+  "lang": "tr",
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
