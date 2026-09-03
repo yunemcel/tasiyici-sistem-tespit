@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#F8B231">
+  <meta name="color-scheme" content="light">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Taşıyıcı Tespit">
+  <meta name="description" content="Çevrimdışı saha taşıyıcı sistem ön sınıflandırma ve analiz arşivi.">
+  <title>Taşıyıcı Sistem Tespit | Karar Destek</title>
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" href="./icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="./icon.svg">
+  <link rel="stylesheet" href="./app.css">
+</head>
+<body>
+<a class="skip" href="#app">Ana içeriğe geç</a>
+<header class="topbar">
+  <div class="brandline"><a class="brand" href="#/home"><span class="brandbar" aria-hidden="true"></span><span>ARI</span></a><span class="productname">Taşıyıcı Sistem Tespit</span></div>
+  <div class="search"><label class="sr" for="globalSearch">Analizlerde ara</label><div class="searchbox"><span aria-hidden="true">⌕</span><input id="globalSearch" type="search" autocomplete="off" placeholder="Analiz numarası, proje veya sonuç ara…" aria-controls="searchResults" aria-expanded="false"></div><div id="searchResults" class="results" role="listbox" hidden></div></div>
+  <nav class="actions" aria-label="Ana navigasyon"><a class="navbtn" data-nav="home" href="#/home">Ana Sayfa</a><a class="navbtn" data-nav="archive" href="#/archive">Analizler</a><a class="navbtn" data-nav="reference" href="#/reference">Referans</a><button class="iconbtn" id="settingsBtn" type="button" aria-label="Ayarlar">⚙</button></nav>
+</header>
+<main id="app" class="workspace"></main>
+<footer class="sitefooter"><div class="footerinner"><div><div class="footerbrand"><span class="brandbar" aria-hidden="true"></span>Taşıyıcı Sistem Tespit</div><p>Bu çalışma, <strong>Yunus Emre Çelik</strong> tarafından çalışma arkadaşlarına karar desteği sağlamak amacıyla hobi olarak hazırlanmıştır. Kullanan herkese iyi çalışmalar; iyi niyetlerimle.</p></div><div class="footerlinks"><a href="#/analysis/new">Yeni Tespit</a><a href="#/archive">Analiz Arşivi</a><a href="#/reference">Saha Referansı</a><a href="#/help">Yardım</a></div><div class="footernote"><strong>Resmî kurumsal uygulama değildir.</strong><br>Sonuç, taşıyıcı sistem için gözlemsel ön sınıflandırmadır; deprem güvenliği veya riskli yapı kararı değildir.</div></div></footer>
+<input id="importInput" type="file" accept=".json,application/json" hidden>
+<div id="modalHost"></div><div id="toasts" class="toasts" aria-live="polite"></div>
+<noscript><div class="noscript">Bu uygulama JavaScript gerektirir. iPhone'da yerel dosya önizlemesi yerine GitHub Pages adresini Safari ile açın.</div></noscript>
+<script src="./app.js" defer></script>
+</body>
+</html>
