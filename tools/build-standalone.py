@@ -4,6 +4,7 @@ ROOT = Path(__file__).resolve().parents[1]
 INDEX = ROOT / "index.html"
 OUTPUT = ROOT / "Tasiyici_Sistem_Tespit_Standalone.html"
 
+# Bu script modüler runtime ile tek dosyalı dağıtımın aynı kalmasını sağlar.
 html = INDEX.read_text(encoding="utf-8")
 css = (ROOT / "app.css").read_text(encoding="utf-8")
 
