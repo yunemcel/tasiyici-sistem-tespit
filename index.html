@@ -12,7 +12,6 @@
   <title>Taşıyıcı Sistem Tespit | Karar Destek</title>
   <link rel="manifest" href="./manifest.webmanifest">
   <link rel="icon" href="./icon.svg" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="./icon.svg">
   <link rel="stylesheet" href="./app.css">
 </head>
 <body>
@@ -27,6 +26,9 @@
 <input id="importInput" type="file" accept=".json,application/json" hidden>
 <div id="modalHost"></div><div id="toasts" class="toasts" aria-live="polite"></div>
 <noscript><div class="noscript">Bu uygulama JavaScript gerektirir. iPhone'da yerel dosya önizlemesi yerine GitHub Pages adresini Safari ile açın.</div></noscript>
+<script src="./engine.js" defer></script>
+<script src="./core.js" defer></script>
+<script src="./views.js" defer></script>
 <script src="./app.js" defer></script>
 </body>
 </html>
