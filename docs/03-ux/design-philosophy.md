@@ -1,10 +1,10 @@
 # Tasarım Felsefesi
 
-Bu araç ARI Portal ile aynı görsel aileyi paylaşır; fakat görevi farklıdır. Portal çok modüllü kurumsal çalışma alanıyken bu ürün sahada tek bir karar akışını hızlandırır.
+Bu ürün sahada tek bir karar akışını hızlandıran operasyonel bir araçtır. Tasarımın görevi, çok sayıda gözlemi aynı yüzeyde okunabilir tutmak ve kullanıcının sonucu gereksiz navigasyon olmadan üretmesini sağlamaktır.
 
 ## Tutarlılık davranışta, kompozisyon görevde
 
-Aynı turuncu marka çizgisi, tipografi, border dili ve focus davranışı ürünler arasında akrabalık kurar. Buna karşılık taşıyıcı sistem tespiti 15 soruluk operasyonel bir form olduğu için Portal Home veya dashboard kart düzenini kopyalamaz.
+Turuncu kimlik çizgisi, tipografi, border dili ve focus davranışı ürün içinde süreklilik kurar. Buna karşılık ekran geometrisi alışkanlıkla tekrar edilmez; 15 soruluk tespit formu, arşiv ve sonuç ekranı farklı görevleri çözdükleri için kompozisyonları görevden türetilir.
 
 ## Yüksek bilgi yoğunluğu burada doğaldır
 
@@ -12,11 +12,15 @@ Saha kullanıcısının aynı yapıya ilişkin soruları birlikte görmesi karş
 
 ## Renk karar değil işarettir
 
-Turuncu marka/primary action, kırmızı destructive, yeşil başarılı/yüksek güven işaretidir. Sonuç yalnız renkle anlatılmaz; başlık ve metin etiketi her zaman vardır.
+Turuncu primary action, kırmızı destructive, yeşil başarılı/yüksek güven işaretidir. Sonuç yalnız renkle anlatılmaz; başlık ve metin etiketi her zaman vardır.
 
 ## Minimalizm teknik bilgiyi saklamak değildir
 
 Gereksiz shadow, kart ve dekorasyon çıkarılır; fakat “karma sistem”, “veri yetersiz”, “mühendislik sınırı” gibi kritik bilgi gizlenmez.
+
+## Aynı işlev iki dağıtım biçiminde korunur
+
+PWA sürümü HTTPS ve service worker üzerinden kurulabilir/çevrimdışı çalışabilir. Tek HTML sürümü ise Windows ve Android'de dosyanın doğrudan açılması için bütün CSS ve JavaScript'i kendi içinde taşır. İki dağıtım biçiminde karar motoru, arşiv ve veri aktarım davranışı aynı kalmalıdır.
 
 ## Mobil uygulama hissi, web davranışını bozmadan
 
