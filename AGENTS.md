@@ -45,7 +45,7 @@ Agent logu tarihçedir; güncel ürün gerçeğinin yerine geçmez.
 ## 5. Tasarım görevi
 
 - `DESIGN.md` bağlayıcıdır.
-- ARI Portal ile aynı tasarım ailesini koru; ekran geometrisini körlemesine kopyalama.
+- Kurulu ürün tasarım dilini ve semantik davranışları koru; eski ekran geometrisini körlemesine kopyalama.
 - Global shell çalışma yüzeyinden daha baskın olmamalıdır.
 - Renk anlam taşır; dekoratif çeşitlilik için ek renk üretme.
 - Her şeyi karta dönüştürme; bölüm, divider, tablo ve düz yüzeyleri kullan.
@@ -54,14 +54,15 @@ Agent logu tarihçedir; güncel ürün gerçeğinin yerine geçmez.
 - Mobilde yeterli dokunma hedefi ve görünür form label'ı koru.
 - `prefers-reduced-motion` desteğini bozma.
 
-## 6. PWA değişikliği
+## 6. Dağıtım değişikliği
 
 App shell değiştiğinde:
 
-1. `sw.js` cache adını gerektiğinde yükselt,
+1. PWA için `sw.js` cache adını gerektiğinde yükselt,
 2. GitHub Pages project path'i için relative yolları koru,
 3. online ilk açılış + offline ikinci açılış senaryosunu test et,
-4. iOS Safari Ana Ekrana Ekle akışını manuel QA listesine göre kontrol et.
+4. `Tasiyici_Sistem_Tespit_Standalone.html` dosyasını aynı runtime'dan yeniden üret,
+5. Windows/Android tek HTML kullanımını manuel QA listesine göre kontrol et.
 
 ## 7. Karar motoru değişikliği
 
