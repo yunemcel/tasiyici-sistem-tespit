@@ -34,7 +34,7 @@ Sonuç **deprem güvenliği**, **riskli yapı tespiti**, **performans analizi**,
 - Analizler cihazın `localStorage` alanında tutulur
 - Proje + analiz numarasıyla yerel arşiv
 - JSON dışa/içe aktarma
-- Mobil paylaşım sayfası desteği bulunan tarayıcılarda paylaşım
+- Destekleyen mobil tarayıcılarda sistem paylaşım sayfası
 - Service worker ile çevrimdışı kullanım
 - iOS Safari Ana Ekran PWA, Android ve masaüstü web hedefi
 
@@ -42,7 +42,7 @@ Sonuç **deprem güvenliği**, **riskli yapı tespiti**, **performans analizi**,
 
 Repository kökten GitHub Pages ile yayınlanacak şekilde hazırlanmıştır.
 
-GitHub repository ayarında:
+Repository ayarında:
 
 - **Source:** Deploy from a branch
 - **Branch:** `main`
@@ -56,7 +56,7 @@ Beklenen adres:
 
 ### iPhone / iPad
 
-1. Yukarıdaki HTTPS adresini **Safari** ile açın.
+1. HTTPS adresini **Safari** ile açın.
 2. Safari paylaşım menüsünden **Ana Ekrana Ekle** seçeneğini kullanın.
 3. Uygulamayı internet bağlantısı varken en az bir kez açın.
 4. Service worker uygulama kabuğunu cache'e aldıktan sonra uygulama çevrimdışı açılabilir.
@@ -95,15 +95,36 @@ Analiz numarası boş bırakılırsa proje içinde `Analiz_1`, `Analiz_2`, ... b
 - Aynı kayıt kimliği tekrar gelirse daha yeni `updatedAt` tercih edilir.
 - Aynı proje + analiz numarası çakışırsa içe gelen kayda benzersiz yeni analiz numarası verilir.
 
+## Runtime yapısı
+
+```text
+index.html
+  ├─ app.css      → responsive UI / tasarım sistemi
+  ├─ engine.js    → karar motoru
+  ├─ core.js      → localStorage / ortak state / yardımcılar
+  ├─ views.js     → ekran görünümleri
+  └─ app.js       → controller / import-export / modal / arama
+
+manifest.webmanifest → PWA metadata
+sw.js                 → offline app-shell cache
+icon.svg              → uygulama ikonu / favicon
+```
+
+Karar motorunun UI'dan ayrı tutulması bilinçlidir. Puan değişiklikleri `docs/05-decision-engine/scoring-model.md` ile birlikte güncellenmelidir.
+
 ## Repository yapısı
 
 ```text
 .
 ├── index.html
+├── app.css
+├── engine.js
+├── core.js
+├── views.js
+├── app.js
 ├── manifest.webmanifest
 ├── sw.js
-├── icon-180.png
-├── icon-512.png
+├── icon.svg
 ├── .nojekyll
 ├── README.md
 ├── AGENTS.md
